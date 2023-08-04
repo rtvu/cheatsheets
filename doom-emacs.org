@@ -1,0 +1,17 @@
+#+title: Doom Emacs Cheatsheet
+
+* Executing Commands
+- =SPC := execute-extended-command :: or =M-x=, execute command
+* Help Commands
+- =SPC h b t= which-key-show-top-level :: show top-level key bindings
+- =SPC h k= helpful-key :: describe key binding
+- =SPC h f= helpful-callable :: describe function
+- =SPC h v= helpful-variable :: describe variable
+- =SPC h w= where-is :: show key binding for command
+* Doom Commands
+- =SPC f P= doom/open-private-config :: browse user's config directory
+- =SPC h d i= user/ediff-init-and-example (custom) :: =ediff= user's =init.el= with =Doom='s example =init.el=
+* File Commands
+- =SPC .= find-file :: find file
+- =SPC f s= save-buffer :: save file
+- =SPC f S= write-file :: save as file
