@@ -1,0 +1,29 @@
+#+title: WSL Cheatsheet
+
+* Install WSL
+
+- =wsl --install --no-distribution= :: install WSL
+- =wsl --install --no-launch= :: install WSL and install the default Ubuntu distribution
+- =wsl --install= :: install WSL, install the default Ubuntu distribution, and launch distribution
+
+* Install Distribution
+
+- =wsl --install <Distribution Name>= :: install distribution
+
+* Uninstall Distribution
+
+- =wsl --unregister <Distribution Name>= :: uninstall distribution
+
+* Commands
+
+- =wsl --shutdown= :: terminates WSL virtual machine
+- =wsl --terminate= :: terminates distribution
+- =wsl --list --verbose= :: list installed distributions
+- =wsl --list --online= :: list available distributions to install
+- =wsl ~ --distribution <Distribution Name> --user <User Name>= :: run distribution with user in home directory
+- =wsl --update= :: update WSL
+- =wsl --status= :: view general information about WSL configuration
+- =wsl --version= :: view WSL version
+- =wsl --help= :: view list of options and commands for WSL
+- =<Distribution Name> config --default-user <User Name>= :: change distribution default user
+- =wsl --set-default <Distribution Name>= :: set default distribution for WSL commands
