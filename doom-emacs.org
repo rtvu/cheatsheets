@@ -19,3 +19,65 @@
 - =SPC p p= projectile-switch-project :: switch to project
 - =SPC SPC= projectile-find-file :: find file in project
 - =SPC p .= +default/browse-project :: browse project root
+* Evil Mode
+** Objects
+- =w= :: from the cursor to the end of the word, including the space
+- =e= :: from the cursor to the end of the word, excluding the space
+- =0= :: from the cursor to the beginning of the line
+- =$= :: from the cursor to the end of the line
+** States
+- =Normal=
+- =Insert=
+- =Visual=
+  - =Character=
+  - =Line=
+  - =Block=
+- =Command-line=
+- =Replace=
+- =Emacs=
+** Transitions From Normal State
+- =i= evil-insert :: Switch to Insert state before point
+- =a= evil-append :: Switch to Insert state after point
+- =A= evil-append-line :: Switch to Insert state at the end of the line
+- =o= evil-open-below :: Insert new line below point, switch to Insert state
+- =O= evil-open-above :: Insert new line above point, switch to Insert state
+- =v= evil-visual-char :: Switch to Visual character state at point
+- =V= evil-visual-line :: Switch to Visual line state at point
+- =C-v= evil-visual-block :: Switch to Visual block state at point
+- =:= evil-ex :: Switch to Command-line state
+- =R= evil-enter-replace-state :: Switch to Replace state at point
+- =C-z= evil-emacs-state :: Switch to Emacs state
+  - No shortcut for Normal state =evil-normal-state=
+** To Normal State From Other State
+- =ESC= evil-force-normal-state :: Switch to Normal state without recording current command
+** Normal State
+*** Cursor
+- =j/k/h/l= evil-next-line, evil-previous-line, evil-backward-char, evil-forward-char :: move down/up/left/right
+- =w/e= evil-forward-word-being, evil-forward-word-end :: go to the beginning/end of the next word
+- =gg/G= evil-goto-first-line, evil-goto-line :: go to first/last line
+- =: [number]= evil-ex :: go to line number
+- =%= evil-jump-item :: find matching pair (), [], {}
+*** Scrolling
+- =C-e/y= evil-scroll-line-down, evil-scroll-line-up :: scroll line down/up
+- =C-d/u= evil-scroll-down, evil-scroll-up :: scroll half page down/up
+- =C-f/b= evil-scroll-page-down, evil-scroll-page-up :: scroll page down/up
+*** Editing
+- =x= evil-delete-char :: delete character
+- =[number] d [object]= evil-delete :: delete
+- =[number] c [object]= evil-change :: change
+- =dd= evil-delete :: delete line
+- =u= evil-undo :: undo
+- =C-r= evil-redo :: redo
+- =p= evil-paste-after :: put the last deletion after the cursor
+- =r= evil-replace :: replace character
+*** Searching
+- =/= evil-ex-search-forward :: search in the forward direction
+  =n= for next match, =N= for previous match
+- =?= evil-ex-search-backward :: search in the backward direction
+  =n= for next match, =N= for previous match
+*** Search and Replace
+- =:s/old/new= :: only the first occurence on the line
+- =:s/old/new/g= :: all occurences on the line
+- =:#,#s/old/new/g= :: all occurences between line numbers
+- =:%s/old/new/g= :: all occurences in the buffer
+- =:%s/old/new/gc= :: all occurences in the buffer, requiring confirmation each time
