@@ -15,3 +15,7 @@
 - =SPC .= find-file :: find file
 - =SPC f s= save-buffer :: save file
 - =SPC f S= write-file :: save as file
+* Projectile Commands
+- =SPC p p= projectile-switch-project :: switch to project
+- =SPC SPC= projectile-find-file :: find file in project
+- =SPC p .= +default/browse-project :: browse project root
