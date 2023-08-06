@@ -81,3 +81,21 @@
 - =:#,#s/old/new/g= :: all occurences between line numbers
 - =:%s/old/new/g= :: all occurences in the buffer
 - =:%s/old/new/gc= :: all occurences in the buffer, requiring confirmation each time
+* Org Mode
+** Normal State
+*** Visibility Cycling
+- =TAB= org-cycle :: TAB-action and visibility cycling (refer to documentation)
+- =S-TAB= org-shifttab :: global visibility cycling or move to previous table field
+- org-fold-show-subtree :: show everything in subtree
+*** Structure Editing
+- =M-LEFT/RIGHT= org-metaleft, org-metaright :: or =M-h/l=, promote/demote heading, promote/demote list item, move left/right table-column
+- =M-S-LEFT/RIGHT= org-shiftmetaleft, org-shiftmetaright :: or =M-H/L=, promote/demote subtree, delete/insert table-column
+- =M-DOWN/UP= org-metadown, org-metaup :: or =M-j/k=, move down/up subtree/list/table-row
+*** Moving
+- =M-RET= org-meta-return :: insert a new heading/item or wrap a region in a table
+- =S-DOWN/UP= org-shiftdown, org-shiftup :: (refer to documentation)
+- =M-S-DOWN/UP= org-shiftmetadown, org-shiftmetaup :: or =M-J/K=, move subtree/list item down/up, insert empty row, update timestamp
+** Insert State
+*** Structure Editing
+- TAB :: demote heading
+- S-TAB :: promote heading
