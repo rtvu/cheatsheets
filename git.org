@@ -1,0 +1,164 @@
+#+title: Git Cheatsheet
+
+* User Configuration
+
+#+begin_src bash
+git config --global user.name <"firstname lastname"> # set user's name
+git config --global user.email <"email">             # set user's email
+git config --global color.ui auto                    # set automatic command line coloring
+git config --global credential.helper store          # set automatic saving of username/password
+#+end_src
+
+* Initialization
+
+#+begin_src bash
+git init --initial-branch=<branch>               # create an empty repository in current directory and set initial branch
+git init --initial-branch=<branch> <directory>   # create an empty repository in directory and set initial branch
+
+git clone <repository>                           # clone repository with default branch in current directory
+git clone <repository> <directory>               # clone repository with default branch to directory
+git clone --initial-branch=<branch> <repository> # clone repository with branch in current directory
+git clone --recurse-submodules <repository>      # clone repository with default branch in current directory and initialize submodules
+#+end_src
+
+* Repositories
+
+#+begin_src bash
+git fetch                                                    # download all changes from remote
+
+git pull                                                     # apply changes from remote into current branch
+
+git push                                                     # update remote with current branch changes
+git push --all                                               # update remote with all branch changes
+git push --force                                             # overwrite remote to match current branch
+git push --set-upstream <remote> <branch>                    # add branch to remote and add tracking reference
+
+git remote --verbose                                         # list current remotes
+
+git remote add <remote> <repository>                         # add repository as remote
+git remote remove <remote>                                   # remove remote
+git remote rename <old> <new>                                # rename remote
+
+git remote set-url --push <remote> PUSH_DISABLED             # disable push to remote
+
+git submodule add --branch=<branch> <repository>             # add submodule with branch
+git submodule add --branch=<branch> <repository> <directory> # add submodule to directory
+#+end_src
+
+* Changes
+
+#+begin_src bash
+git add .                                               # stage all files
+git add <file-1> ... <file-n> <folder-1> ... <folder-n> # stage files and folders
+
+git mv <source> <destination>                           # move or rename a file or directory
+
+git rm <file-1> ... <file-n>                            # remove files
+git rm -rf <folder-1> ... <folder-n>                    # remove folders
+
+git clean --dry-run                                     # list files and folders to be removed
+git clean -df                                           # remove untracked files and folders
+git clean -dfx                                          # remove untracked/ignored files and folders
+
+git diff                                                # show diff of unstaged changes to staged changes
+git diff <file-1> .. <file-n>                           # show diff of unstaged changes to staged changes in files
+git diff --cached                                       # show diff of staged changes to HEAD
+#+end_src
+
+* Commits
+
+#+begin_src bash
+git commit                       # commit staged changes, write commit message in default editor
+git commit --message=<"message"> # commit staged changes with message as commit message
+git commit --amend               # commit staged changes to previous commit, change commit message in default editor
+git commit --amend --no-edit     # commit staged changes to previous commit
+
+git merge <branch>               # merge branch into current branch
+git merge --squash <branch>      # merge branch changes as one commit into current branch
+
+git rebase --interactive HEAD~n  # rebase the last n commits
+#+end_src
+
+* Inspections
+
+#+begin_src bash
+git status # show status of files with untracked, unstaged, and staged changes
+
+git log    # show commit logs
+#+end_src
+
+* Branches
+
+#+begin_src bash
+git branch --all --verbose          # list local and remote branches
+
+git branch <branch>                 # create new branch
+
+git branch --delete <branch>        # delete branch
+git push <remote> --delete <branch> # delete remote branch
+
+git checkout <branch>               # checkout branch
+git checkout -b <branch>            # create and checkout new branch based on current branch
+#+end_src
+
+* Stashes
+
+#+begin_src bash
+git stash push --message=<"message"> # stash uncommitted changes with message as stash message
+# --include-untracked: to also stash untracked files
+# --all:               to aslo stash untracked files and ignored files
+
+git stash list                       # list stash stack
+git stash show                       # show changes with topmost stash as a diff
+
+git stash apply                      # apply the topmost stash
+git stash pop                        # remove and apply the topmost stash
+git stash drop                       # remove the topmost stash
+git clear                            # remove all stash entries
+
+git stash <branch>                   # create and check out a new branch starting from the commit that created the stash and pop the stash in the new branch
+#+end_src
+
+* Undo Changes
+
+#+begin_src bash
+git reset --hard <remote>/<branch>      # set branch to match remote branch
+
+git reset --hard HEAD                   # discard all changes
+
+git reset .                             # unstage all changes
+git reset <file-1> ... <file-n>         # unstage changes in files
+
+git checkout HEAD <file-1> ... <file-n> # discard changes to files
+#+end_src
+
+* Private Fork Recipe
+
+#+begin_src bash
+git clone --bare <project-url>
+cd <project>
+git push --mirror <my-project-url>
+cd ..
+rm -rf <project>
+
+git clone <my-project-url>
+cd <project>
+git remote add upstream <project-url>
+git remote set-url --push upstream PUSH_DISABLED
+
+git remote --verbose
+git pull upstream main
+git push origin main
+#+end_src
+
+* Cheatsheet References
+
+** Git Tower - [[https://www.git-tower.com/blog/git-cheat-sheet][Link]] [7/7]
+
+- [X] Create
+- [X] Local Changes
+- [X] Commit History
+- [X] Branches & Tags
+- [X] Update & Publish
+- [X] Merge & Rebase
+- [X] Undo
