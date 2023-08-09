@@ -2,28 +2,43 @@
 
 * Install WSL
 
-- =wsl --install --no-distribution= :: install WSL
-- =wsl --install --no-launch= :: install WSL and install the default Ubuntu distribution
-- =wsl --install= :: install WSL, install the default Ubuntu distribution, and launch distribution
+#+begin_src bash
+wsl --install --no-distribution # install WSL
+wsl --install --no-launch       # install WSL and install the default Ubuntu distribution
+wsl --install                   # install WSL, install the default Ubuntu distribution, and launch distribution
+#+end_src
 
 * Install Distribution
 
-- =wsl --install <Distribution Name>= :: install distribution
+#+begin_src bash
+wsl --install <distribution> # install distribution
+#+end_src
 
 * Uninstall Distribution
 
-- =wsl --unregister <Distribution Name>= :: uninstall distribution
+#+begin_src bash
+wsl --unregister <distribution> # uninstall distribution
+#+end_src
 
 * Commands
 
-- =wsl --shutdown= :: terminates WSL virtual machine
-- =wsl --terminate= :: terminates distribution
-- =wsl --list --verbose= :: list installed distributions
-- =wsl --list --online= :: list available distributions to install
-- =wsl ~ --distribution <Distribution Name> --user <User Name>= :: run distribution with user in home directory
-- =wsl --update= :: update WSL
-- =wsl --status= :: view general information about WSL configuration
-- =wsl --version= :: view WSL version
-- =wsl --help= :: view list of options and commands for WSL
-- =<Distribution Name> config --default-user <User Name>= :: change distribution default user
-- =wsl --set-default <Distribution Name>= :: set default distribution for WSL commands
+#+begin_src bash
+wsl --shutdown                                    # terminates WSL virtual machine
+wsl --terminate <distribution>                    # terminates distribution
+
+wsl --list                                        # list installed distributions
+wsl --list --verbose                              # list installed distributions with additional information
+wsl --list --online                               # list available distributions to install
+
+<distribution> config --default-user <user>       # change distribution default user
+wsl --set-default <distribution>                  # set default distribution for WSL commands
+
+wsl ~                                             # run default distribution with default user in home directory
+wsl ~ --distribution <distribution> --user <user> # run distribution with user in home directory
+
+wsl --update                                      # update WSL
+
+wsl --status                                      # view general information about WSL configuration
+wsl --version                                     # view WSL version
+wsl --help                                        # view list of options and commands for WSL
+#+end_src
